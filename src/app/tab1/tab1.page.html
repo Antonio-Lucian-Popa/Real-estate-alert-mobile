@@ -1,17 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- home.page.html -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <!-- Mesaj de întâmpinare -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bun venit în aplicația de alertă imobiliară!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Găsește rapid apartamente care corespund preferințelor tale de căutare.
+    </ion-card-content>
+  </ion-card>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- Secțiune cu scurt rezumat -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Ultimele apartamente găsite</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="latestListings.length > 0; else noListings">
+        <ion-list>
+          <ion-item *ngFor="let listing of latestListings">
+            <ion-label>
+              <h2>{{ listing.title }}</h2>
+              <p>{{ listing.city }} - {{ listing.price }}€</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <ng-template #noListings>
+        <p>Momentan nu sunt apartamente noi disponibile.</p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Căutare rapidă -->
+  <ion-button expand="full" color="primary" (click)="startQuickSearch()">
+    Începe o căutare rapidă
+  </ion-button>
+
+  <!-- Grafic sau statistici (opțional) -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Statistici recente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Numărul de apartamente găsite săptămâna aceasta: {{ weeklyListingCount }}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

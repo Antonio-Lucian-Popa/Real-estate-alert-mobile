@@ -1,0 +1,32 @@
+/* preferences.page.scss */
+
+/* Stiluri generale pentru card */
+ion-card {
+  background-color: #1e1e1e; /* Culoare de fundal întunecată pentru card */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #ffffff; /* Culoare albă pentru text */
+}
+
+/* Stiluri pentru inputuri */
+ion-item {
+  --background: transparent; /* Fundal transparent pentru item */
+  color: #ffffff; /* Text alb pentru a fi vizibil pe fundal întunecat */
+}
+
+ion-input {
+  color: #ffffff; /* Text alb în input */
+  --placeholder-color: #cccccc; /* Culoare pentru placeholder */
+}
+
+ion-label {
+  color: #ffffff; /* Culoare albă pentru label */
+}
+
+/* Stil pentru buton */
+ion-button {
+  margin-top: 12px;
+  border-radius: 8px;
+  --background: #5a67d8; /* Culoare personalizată pentru buton */
+  --background-hover: #4c51bf; /* Culoare pentru hover */
+}

@@ -1,17 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- listings.page.html -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <!-- Filtrare și sortare - organizate într-un card pentru aspect clar -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Filtrare și Sortare</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Filtru preț -->
+      <ion-item lines="none">
+        <ion-label position="floating">Filtrare după preț maxim</ion-label>
+        <ion-input type="number" [(ngModel)]="maxPrice" placeholder="Ex: 40000"></ion-input>
+      </ion-item>
+      <ion-button expand="block" color="tertiary" (click)="filterListings()">
+        Aplică Filtrul
+      </ion-button>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <!-- Sortare -->
+      <ion-item lines="none" class="sort-item">
+        <ion-label>Sortare după</ion-label>
+        <ion-select [(ngModel)]="sortOption" (ionChange)="sortListings()" interface="popover">
+          <ion-select-option value="recent">Cele mai recente</ion-select-option>
+          <ion-select-option value="priceAsc">Preț crescător</ion-select-option>
+          <ion-select-option value="priceDesc">Preț descrescător</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Listă de anunțuri - card pentru fiecare anunț -->
+  <ion-list>
+    <ion-card *ngFor="let listing of filteredListings">
+      <ion-card-header>
+        <ion-card-title>{{ listing.title }}</ion-card-title>
+        <ion-card-subtitle>{{ listing.city }} - {{ listing.price }}€</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Data postării: {{ listing.date_posted | date }}</p>
+      </ion-card-content>
+      <ion-button expand="block" color="primary" (click)="viewListingDetails(listing)">
+        Vezi Detalii
+      </ion-button>
+    </ion-card>
+  </ion-list>
+
+  <!-- Mesaj când nu sunt anunțuri disponibile -->
+  <div *ngIf="filteredListings.length === 0" class="no-listings">
+    <p>Nu există anunțuri care să corespundă criteriilor tale.</p>
+  </div>
 </ion-content>

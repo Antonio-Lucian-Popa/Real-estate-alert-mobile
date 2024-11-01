@@ -1,0 +1,29 @@
+/* listings.page.scss */
+
+/* Stiluri pentru carduri */
+ion-card {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stiluri pentru filtrare și sortare */
+.sort-item {
+  margin-top: 16px;
+}
+
+.no-listings {
+  text-align: center;
+  color: #999;
+  margin-top: 20px;
+}
+
+/* Culori pentru butoane */
+ion-button {
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+ion-card-title, ion-card-subtitle {
+  font-weight: 500;
+}
